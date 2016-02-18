@@ -1,69 +1,79 @@
-Unfix
-=======
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
 
-Seems that half the pages on the web these days
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-d92108fa6d44bdf5dbc8728c7ccabb1c116b72bb10ef0fe43d0a4e068753d10b.css" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github2-1057b554e0715060b2ccfbd8d99eb270dd99b8151774729ed07412212c5063b4.css" media="all" rel="stylesheet" />
+    
+    <meta name="description" content="unfix - Remove fixed DOM elements like annoying navigation headers with a bookmarklet">
+    <title>Unfix</title>
+  </head>
+  <body class="env-production linux vis-public" style="width: 20em; margin:auto">   
+  <div id="readme" class="readme boxed-group clearfix announce instapaper_body md">
+      <article class="markdown-body entry-content" itemprop="text">
+        <h1><a href="https://github.com/revpriest/unfix">Unfix</a></h1>
+
+<p>Seems that half the pages on the web these days
 have annoying fixed navigation headers at the top
 and/or bottom of the page breaking the use of
-the space-bar or page-up/down for paging text.
+the space-bar or page-up/down for paging text.</p>
 
-I finally had enough of it so I made a bookmarklet
-to remove them.
+<p>I finally had enough of it so I made a bookmarklet
+to remove them.</p>
 
-It just spiders the DOM and changes and "Position:fixed"
-elements into "position:absolute".
+<p>It just spiders the DOM and changes and "Position:fixed"
+elements into "position:absolute".</p>
 
-Install it by dragging the following link into
-your bookmarks tool-bar:
+<p>Install it by dragging the following button into your bookmarks tool-bar:</p>
 
-<a href="javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.position='absolute'; } } }); })();">Unfix</a>
+<p><a style="font-size:3em;border:2px solid;padding:0.1em 2em;background:#ddd;" href="javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.position='absolute'; } } }); })();">Unfix</a></p>
 
-Then next time some website is being annoying with
-it's fixed headers, click the bookmarklet.
+<p>Then next time some website is being annoying with it's fixed headers, click the bookmarklet in your toolbar.</p>
 
-Personally I don't have a bookmarks-toolbar since
+<p>Personally I don't have a bookmarks-toolbar since
 I use <a href="http://5digits.org/pentadactyl/">Pentadactyl</a>
 and do most of my web-driving by keyboard (or by
-voice control mapped to keyboard).
+voice control mapped to keyboard).</p>
 
-You can add this line to your .pentadactylrc if you'd
-sooner:
+<p>You can add this line to your .pentadactylrc if you'd
+sooner:</p>
 
-```
-command! unfix -description "Unfix DOM Nodes" open javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.position='absolute'; } } }); })();
-```
+<pre><code>command! unfix -description "Unfix DOM Nodes" open javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.position='absolute'; } } }); })();
+</code></pre>
 
-Here's the javascript in that bookmarklet formatted
+<p>Here's the javascript in that bookmarklet formatted
 nicely. The short variable names are:
 "n" is for "node", 
 "f" is for "function", 
 "s" for "style" and 
-"d" for "display".
+"d" for "display".</p>
 
-```javascript
-    (function(){
-      function walk(n, f) {
-        f(n);
-        n = n.firstChild;
-        while (n) {
-            walk(n, f);
-            n = n.nextSibling;
+<div class="highlight highlight-source-js"><pre>    (<span class="pl-k">function</span>(){
+      <span class="pl-k">function</span> <span class="pl-en">walk</span>(<span class="pl-smi">n</span>, <span class="pl-smi">f</span>) {
+        <span class="pl-en">f</span>(n);
+        n <span class="pl-k">=</span> <span class="pl-smi">n</span>.<span class="pl-c1">firstChild</span>;
+        <span class="pl-k">while</span> (n) {
+            <span class="pl-en">walk</span>(n, f);
+            n <span class="pl-k">=</span> <span class="pl-smi">n</span>.<span class="pl-c1">nextSibling</span>;
         }
       }
 
-      walk(document.body, function (n) {
-        if(n.nodeType==1){
-          var s = window.getComputedStyle(n);
-          var d = s.getPropertyValue('position');
-          if(d=='fixed'){
-            n.style.position='absolute';
+      <span class="pl-en">walk</span>(<span class="pl-c1">document</span>.<span class="pl-c1">body</span>, <span class="pl-k">function</span> (<span class="pl-smi">n</span>) {
+        <span class="pl-k">if</span>(<span class="pl-smi">n</span>.<span class="pl-c1">nodeType</span><span class="pl-k">==</span><span class="pl-c1">1</span>){
+          <span class="pl-k">var</span> s <span class="pl-k">=</span> <span class="pl-c1">window</span>.<span class="pl-en">getComputedStyle</span>(n);
+          <span class="pl-k">var</span> d <span class="pl-k">=</span> <span class="pl-smi">s</span>.<span class="pl-en">getPropertyValue</span>(<span class="pl-s"><span class="pl-pds">'</span>position<span class="pl-pds">'</span></span>);
+          <span class="pl-k">if</span>(d<span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>fixed<span class="pl-pds">'</span></span>){
+            <span class="pl-smi">n</span>.<span class="pl-c1">style</span>.<span class="pl-smi">position</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>absolute<span class="pl-pds">'</span></span>;
           }
         }
       }); 
-    })();
-```
+    })();</pre></div>
 
-Tested in Firefox (well, Iceweasel) and only that,
-will test it in Chrome shortly. Can't test IE or
-Safari coz I don't have OS X or Windows.
 
+  <p>Tested in Firefox (well, Iceweasel) and only that, will test it in Chrome shortly. Can't test IE or Safari coz I don't have OS X or Windows.</p>
+  </article>
+
+  </body>
+</html>
 
