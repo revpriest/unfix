@@ -63,8 +63,8 @@ nicely. The short variable names are:
     })();
 ```
 
-Tested in Firefox (well, Iceweasel) and only that,
-will test it in Chrome shortly. Can't test IE or
-Safari coz I don't have OS X or Windows.
+Tested in Firefox (well, Iceweasel) and Chrome. 
+
+Can't test IE or Safari coz I don't have OS X or Windows.
 
 
