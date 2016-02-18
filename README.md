@@ -12,10 +12,9 @@ to remove them.
 It just spiders the DOM and changes and "Position:fixed"
 elements into "position:absolute".
 
-Install it by dragging the following link into
-your bookmarks tool-bar:
-
-<a href="javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.position='absolute'; } } }); })();">Unfix</a>
+Install it by dragging the big button on the
+<a href="http://revpriest.github.io/unfix/">install page</a>
+into your bookmarks tool-bar.
 
 Then next time some website is being annoying with
 it's fixed headers, click the bookmarklet.
