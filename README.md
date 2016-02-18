@@ -12,6 +12,8 @@ to remove them.
 It just spiders the DOM and changes and "Position:fixed"
 elements into "position:absolute".
 
+<h2>Install</h2>
+
 Install it by dragging the big button on the
 <a href="http://revpriest.github.io/unfix/">install page</a>
 into your bookmarks tool-bar.
