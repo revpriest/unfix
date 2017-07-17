@@ -27,7 +27,7 @@ elements into "position:absolute".</p>
 
 <p>Install it by dragging the following button into your bookmarks tool-bar:</p>
 
-<p><a style="font-size:3em;border:2px solid;padding:0.1em 2em;background:#ddd;" href="javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.setProperty('position','absolute','important); } } }); })();">Unfix</a></p>
+<p><a style="font-size:3em;border:2px solid;padding:0.1em 2em;background:#ddd;" href="javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.setProperty('position','absolute','important'); } } }); })();">Unfix</a></p>
 
 <p>Then next time some website is being annoying with it's fixed headers, click the bookmarklet in your toolbar.</p>
 
@@ -39,7 +39,7 @@ voice control mapped to keyboard).</p>
 <p>You can add this line to your .pentadactylrc if you'd
 sooner:</p>
 
-<pre><code>command! unfix -description "Unfix DOM Nodes" open javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.position='absolute'; } } }); })();
+<pre><code>command! unfix -description "Unfix DOM Nodes" open javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.setProperty('position','absolute','important'); } } }); })();
 </code></pre>
 
 <p>Here's the javascript in that bookmarklet formatted
@@ -64,7 +64,7 @@ nicely. The short variable names are:
           <span class="pl-k">var</span> s <span class="pl-k">=</span> <span class="pl-c1">window</span>.<span class="pl-en">getComputedStyle</span>(n);
           <span class="pl-k">var</span> d <span class="pl-k">=</span> <span class="pl-smi">s</span>.<span class="pl-en">getPropertyValue</span>(<span class="pl-s"><span class="pl-pds">'</span>position<span class="pl-pds">'</span></span>);
           <span class="pl-k">if</span>(d<span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>fixed<span class="pl-pds">'</span></span>){
-            <span class="pl-smi">n</span>.<span class="pl-c1">style</span>.<span class="pl-smi">position</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>absolute<span class="pl-pds">'</span></span>;
+            <span class="pl-smi">n</span>.<span class="pl-c1">style</span>.<span class="pl-smi">setProperty('position'</span><span class="pl-k">,</span><span class="pl-s"><span class="pl-pds">'</span>'absolute','important')<span class="pl-pds">'</span></span>;
           }
         }
       }); 
