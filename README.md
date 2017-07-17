@@ -30,7 +30,7 @@ You can add this line to your .pentadactylrc if you'd
 sooner:
 
 ```
-command! unfix -description "Unfix DOM Nodes" open javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.position='absolute'; } } }); })();
+command! unfix -description "Unfix DOM Nodes" open javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.setProperty('position','absolute','important'); } } }); })();
 ```
 
 Here's the javascript in that bookmarklet formatted
@@ -56,7 +56,7 @@ nicely. The short variable names are:
           var s = window.getComputedStyle(n);
           var d = s.getPropertyValue('position');
           if(d=='fixed'){
-            n.style.position='absolute';
+            n.style.setProperty("position","absolute","important");
           }
         }
       }); 
