@@ -42,34 +42,6 @@ sooner:</p>
 <pre><code>command! unfix -description "Unfix DOM Nodes" open javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.setProperty('position','absolute','important'); } } }); })();
 </code></pre>
 
-<p>Here's the javascript in that bookmarklet formatted
-nicely. The short variable names are:
-"n" is for "node", 
-"f" is for "function", 
-"s" for "style" and 
-"d" for "display".</p>
-
-<div class="highlight highlight-source-js"><pre>    (<span class="pl-k">function</span>(){
-      <span class="pl-k">function</span> <span class="pl-en">walk</span>(<span class="pl-smi">n</span>, <span class="pl-smi">f</span>) {
-        <span class="pl-en">f</span>(n);
-        n <span class="pl-k">=</span> <span class="pl-smi">n</span>.<span class="pl-c1">firstChild</span>;
-        <span class="pl-k">while</span> (n) {
-            <span class="pl-en">walk</span>(n, f);
-            n <span class="pl-k">=</span> <span class="pl-smi">n</span>.<span class="pl-c1">nextSibling</span>;
-        }
-      }
-
-      <span class="pl-en">walk</span>(<span class="pl-c1">document</span>.<span class="pl-c1">body</span>, <span class="pl-k">function</span> (<span class="pl-smi">n</span>) {
-        <span class="pl-k">if</span>(<span class="pl-smi">n</span>.<span class="pl-c1">nodeType</span><span class="pl-k">==</span><span class="pl-c1">1</span>){
-          <span class="pl-k">var</span> s <span class="pl-k">=</span> <span class="pl-c1">window</span>.<span class="pl-en">getComputedStyle</span>(n);
-          <span class="pl-k">var</span> d <span class="pl-k">=</span> <span class="pl-smi">s</span>.<span class="pl-en">getPropertyValue</span>(<span class="pl-s"><span class="pl-pds">'</span>position<span class="pl-pds">'</span></span>);
-          <span class="pl-k">if</span>(d<span class="pl-k">==</span><span class="pl-s"><span class="pl-pds">'</span>fixed<span class="pl-pds">'</span></span>){
-            <span class="pl-smi">n</span>.<span class="pl-c1">style</span>.<span class="pl-smi">setProperty('position'</span><span class="pl-k">,</span><span class="pl-s"><span class="pl-pds">'</span>'absolute','important')<span class="pl-pds">'</span></span>;
-          }
-        }
-      }); 
-    })();</pre></div>
-
 
     <p>Tested in Firefox (well, Iceweasel) and Chrome.</p>
     <p>Can't test IE or Safari coz I don't have OS X or Windows.</p>
