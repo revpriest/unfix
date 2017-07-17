@@ -27,7 +27,7 @@ elements into "position:absolute".</p>
 
 <p>Install it by dragging the following button into your bookmarks tool-bar:</p>
 
-<p><a style="font-size:3em;border:2px solid;padding:0.1em 2em;background:#ddd;" href="javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.position='absolute'; } } }); })();">Unfix</a></p>
+<p><a style="font-size:3em;border:2px solid;padding:0.1em 2em;background:#ddd;" href="javascript:(function(){ function walk(n, f) { f(n); n = n.firstChild; while (n) { walk(n, f); n = n.nextSibling; } } walk(document.body, function (n) { if(n.nodeType==1){ var s = window.getComputedStyle(n); var d = s.getPropertyValue('position'); if(d=='fixed'){ n.style.setProperty('position','absolute','important); } } }); })();">Unfix</a></p>
 
 <p>Then next time some website is being annoying with it's fixed headers, click the bookmarklet in your toolbar.</p>
 
